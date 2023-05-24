@@ -93,7 +93,7 @@ class SukNotify:
             cls.notify_article(x)
 
 
-if __name__ == '__main__':
+def main():
     suk = SukMain()
     articles = suk.get_all_articles_sync_for()
     if os.path.exists("articles.json"):
@@ -104,3 +104,7 @@ if __name__ == '__main__':
         notif.notify_articles(diff)
     with open("articles.json", encoding="utf-8", mode="w+") as f:
         json.dump(articles, f, indent=4, ensure_ascii=False)
+
+
+if __name__ == '__main__':
+    main()
