@@ -22,7 +22,7 @@ jobs:
       with:
         version: '1.5.0'
     - name: Run main
-      run: 'poetry run main.py'
+      run: 'poetry run python main.py'
     - name: Commit changes
       uses: EndBug/add-and-commit@v9
       with:
