@@ -1,0 +1,32 @@
+name: Parse
+
+on:
+  schedule:
+    - cron: '00 12 */3 * *'
+  workflow_dispatch: {}
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.9"
+    - name: Setup Poetry
+      uses: pronovic/setup-poetry@v1
+      with:
+        version: '1.5.0'
+    - name: Run main
+      run: 'poetry run main.py'
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        add: 'articles.json'
+        message: 'Update Sukeban Articles'
+        default_author: github_actions
+        push: true
