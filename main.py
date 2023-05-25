@@ -96,12 +96,12 @@ class SukNotify:
 def main():
     suk = SukMain()
     articles = suk.get_all_articles_sync_for()
-    if os.path.exists("articles.json"):
-        with open("articles.json", encoding="utf-8", mode="r") as f:
-            old_articles = json.load(f)
-        diff = list(set(articles) - set(old_articles))
-        notif = SukNotify()
-        notif.notify_articles(diff)
+    # if os.path.exists("articles.json"):
+    #     with open("articles.json", encoding="utf-8", mode="r") as f:
+    #         old_articles = json.load(f)
+    #     diff = list(set(articles) - set(old_articles))
+    #     notif = SukNotify()
+    #     notif.notify_articles(diff)
     with open("articles.json", encoding="utf-8", mode="w+") as f:
         json.dump(articles, f, indent=4, ensure_ascii=False)
 
